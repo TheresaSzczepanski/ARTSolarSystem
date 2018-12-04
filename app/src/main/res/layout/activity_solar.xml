@@ -26,13 +26,63 @@
       android:layout_height="fill_parent"
       android:layout_gravity="top"/>
 
-  <ToggleButton
-      android:id="@+id/toggle"
+
+    <ToggleButton
+        android:id="@+id/toggle"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#BB381C"
+        android:text=" "
+        />
+
+
+    <TextView
+      android:id="@+id/orbitHeader"
       android:layout_width="match_parent"
-      android:layout_height="100dp"
-      android:layout_gravity="center_horizontal|bottom"
-      android:layout_marginBottom="20dp"
-      android:background="#3F79B2"
-      android:text="Off" />
+      android:layout_height="wrap_content"
+      android:text="Orbit Speed:"
+      android:textAlignment="center" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_marginTop="10dp">
+
+  <SeekBar
+      android:id="@+id/orbitSpeedBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="4dp" />
+
+  <TextView
+      android:id="@+id/rotationHeader"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Rotation Speed:"
+      android:textAlignment="center"
+      android:paddingTop="2dp" />
+
+  <SeekBar
+      android:id="@+id/rotationSpeedBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="4dp" />
+
+  <TextView
+      android:id="@+id/scaleHeader"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Scale:"
+      android:textAlignment="center"
+      android:paddingTop="2dp" />
+
+  <SeekBar
+      android:id="@+id/scaleSeekBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="4dp"
+      />
+  </LinearLayout>
 
 </RelativeLayout>

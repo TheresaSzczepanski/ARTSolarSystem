@@ -54,18 +54,25 @@ public class Planet extends Node implements Node.OnTapListener {
 
   private static final float INFO_CARD_Y_POS_COEFF = 1.0f;
 
+  public Node parent;
+
+  public float fromParent;
+
   public Planet(
       Context context,
       String planetName,
       float planetScale,
       ModelRenderable planetRenderable,
-      SolarSettings solarSettings) {
+      SolarSettings solarSettings, Node parent, float fromParent) {
+    this.fromParent = fromParent;
     this.context = context;
     this.planetName = planetName;
     this.planetScale = planetScale;
     this.planetRenderable = planetRenderable;
     this.solarSettings = solarSettings;
     this.myScale = planetScale;
+    this.parent = parent;
+    this.setWorldScale(new Vector3 (planetScale, planetScale, planetScale));
     setOnTapListener(this);
   }
 
@@ -102,7 +109,7 @@ public class Planet extends Node implements Node.OnTapListener {
       planetVisual = new RotatingNode(solarSettings, false);
       planetVisual.setParent(this);
       planetVisual.setRenderable(planetRenderable);
-      planetVisual.setLocalScale(new Vector3(planetScale, planetScale, planetScale));
+      planetVisual.setLocalScale(new Vector3(1.0f, 1.0f, 1.0f));
     }
   }
 
@@ -129,7 +136,7 @@ public class Planet extends Node implements Node.OnTapListener {
       return;
     }
 
-    infoCard.setLocalPosition(new Vector3(0.0f, planetScale * INFO_CARD_Y_POS_COEFF, 0.0f));
+    infoCard.setLocalPosition(new Vector3(planetScale * INFO_CARD_Y_POS_COEFF, 0.0f, 0.0f));
     Vector3 cameraPosition = getScene().getCamera().getWorldPosition();
     Vector3 cardPosition = infoCard.getWorldPosition();
     Vector3 direction = Vector3.subtract(cameraPosition, cardPosition);
